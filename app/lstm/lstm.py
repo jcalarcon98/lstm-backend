@@ -186,7 +186,7 @@ def get_countrywise_forcast_deaths(data, pivot_date, country_name, state_name, n
     return list(x_truth), list(y_truth), list(x_pred), list(y_pred)
 
 
-def get_countries_prediction(countries: list[dict]):
+def get_countries_prediction(countries: list[dict], pivot_date: str):
     current_dir = pathlib.Path().resolve()
     train_data_path = f'{current_dir}/app/data/train.csv'
     submission_data_path = f'{current_dir}/app/data/submission.csv'
@@ -227,7 +227,7 @@ def get_countries_prediction(countries: list[dict]):
     # pivot_date -> previous date data for training
     # forcast_start_date -> date from prediction will be done.
     n_steps = 7
-    pivot_date = "'2020-04-02'"
+    pivot_date = f"'{pivot_date}'"
     forcast_start_date = '2020-04-02'
     print('Preparación de conjuntos de datos de casos confirmados acumulados')
     X_c, y_c = create_train_dataset('Confirmed', n_steps, train, pivot_date, unique_regions, states_per_regions)

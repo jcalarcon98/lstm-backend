@@ -29,4 +29,4 @@ def prediction(prediction: Prediction):
     countries = []
     for country in prediction.countries:
         countries.append({'name': country, 'days': prediction.days})
-    return get_countries_prediction(countries)
+    return get_countries_prediction(countries, prediction.pivot_date)
